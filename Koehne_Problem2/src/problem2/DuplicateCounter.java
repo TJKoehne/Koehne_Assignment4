@@ -16,12 +16,20 @@ public class DuplicateCounter {
 	
 	public void count(String dataFile) {
 		File inputFile = new File(dataFile);
-		
+		String nextInput = new String();
 		//Try catch that imports the text from a file into an ArrayList
 		try (Scanner input = new Scanner(inputFile)){
 			while(input.hasNext()) {
-				fileContent.add(input.next().toLowerCase().replaceAll("\\p{Punct}", ""));
+				nextInput = input.next().toLowerCase().replaceAll("\\p{Punct}", "");
+				if (! (nextInput.isEmpty())) {
+					if (wordCounter.containsKey(nextInput)){
+						wordCounter.put(nextInput, wordCounter.get(nextInput) + 1);
+					} else {
+						wordCounter.put(nextInput, 1);
+					}
+				}
 			}
+
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found please try again");
 			System.exit(0);
@@ -29,18 +37,14 @@ public class DuplicateCounter {
 		
 		//for loop to go through the input and see if the word is unique and count its appearances
 		for (int i = 1; i < fileContent.size(); i++) {
-			if (wordCounter.containsKey(fileContent.get(i))){
-				int count = wordCounter.get(fileContent.get(i));
-				wordCounter.put(fileContent.get(i), count + 1);
-			} else {
-				wordCounter.put(fileContent.get(i), 1);
-			}
+			
 		}
 	}
 	
 	public void write(String outputFile) {
 		
 		//Try catch that writes the unique words to output file
+		//Overwrites the file or creates a new one
 		try (PrintWriter output = new PrintWriter(outputFile);) {
 			for (String word: wordCounter.keySet()) {
 				output.println(word + " " + wordCounter.get(word));
@@ -49,7 +53,5 @@ public class DuplicateCounter {
 			System.out.println("File not found please try again");
 			System.exit(0);
 		}
-	}
-	
-	
+	}	
 }
