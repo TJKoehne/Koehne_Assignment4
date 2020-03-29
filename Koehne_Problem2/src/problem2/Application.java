@@ -2,9 +2,18 @@ package problem2;
 
 public class Application {
 
+	//File names to be used in the program
+	static final String INPUT_FILE_NAME = new String("problem2.txt");
+	static final String OUTPUT_FILE_NAME = new String("unique_words_counts.txt");
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		DuplicateCounter duplicateCounter = new DuplicateCounter();
+		
+		duplicateCounter.count(INPUT_FILE_NAME);
+		duplicateCounter.write(OUTPUT_FILE_NAME);
+		
+		System.out.println("Application Complete: Unique Words Counts Generated.");
 	}
 
 }
