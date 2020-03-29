@@ -2,17 +2,19 @@ package problem1;
 
 public class Application {
 
-	static String INPUT_FILE_NAME = new String("problem1.txt");
-	static String OUTPUT_FILE_NAME = new String("unique_words.txt");
+	//File names to be used in the program
+	static final String INPUT_FILE_NAME = new String("problem1.txt");
+	static final String OUTPUT_FILE_NAME = new String("unique_words.txt");
 	
 	public static void main(String[] args) {
 		
-		DuplicateRemover dr1 = new DuplicateRemover();
+		DuplicateRemover duplicateRemover = new DuplicateRemover();
 		
-		dr1.remove(INPUT_FILE_NAME);
-		dr1.write(OUTPUT_FILE_NAME);
+		duplicateRemover.remove(INPUT_FILE_NAME);
+		duplicateRemover.write(OUTPUT_FILE_NAME);
 		
 		System.out.println("Application Complete: Unique Words Generated.");
+		
 	}
 
 }

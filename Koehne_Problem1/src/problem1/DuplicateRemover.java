@@ -24,6 +24,7 @@ public class DuplicateRemover {
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found please try again");
+			System.exit(0);
 		}
 		
 		//For loop checking if a word is unique before adding it to the output array list
@@ -35,9 +36,7 @@ public class DuplicateRemover {
 	}
 	
 	public void write (String outputFile) {
-		
-		File fileOutput = new File(outputFile);
-		
+				
 		//Try catch that writes the unique words to output file
 		try (PrintWriter output = new PrintWriter(outputFile);) {
 			for (int i = 0; i < uniqueWords.size(); i++) {
@@ -45,6 +44,7 @@ public class DuplicateRemover {
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found please try again");
+			System.exit(0);
 		}
 	}
 }
