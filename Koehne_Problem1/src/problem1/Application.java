@@ -1,3 +1,5 @@
+//Thomas Koehne 3-29-20
+
 package problem1;
 
 public class Application {
@@ -16,5 +18,4 @@ public class Application {
 		System.out.println("Application Complete: Unique Words Generated.");
 		
 	}
-
 }
